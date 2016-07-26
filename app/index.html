@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>myChatApp</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+    
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    
+    <div class="container">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist" id="navigationTabs">
+        <li role="presentation"><a href="#chat" aria-controls="home" role="tab" data-toggle="tab">Chat</a></li>
+        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Photos</a></li>
+        <li role="presentation"  class="activeq"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane" id="chat">
+          <div class="padding-15">
+            <div class="row">
+              <div id="allPosts" class="form-control margin-bottom-15"></div>
+              <div class="input-group">
+                <input id="message" type="text" class="form-control" placeholder="send something to everyone">
+                <span class="input-group-btn">
+										<button id="send" class="btn btn-success" type="button">Send</button>
+									</span>
+              </div><!-- /input-group -->
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="messages">
+          <div class="padding-15">
+            <div class="row">
+              <div class="col-md-9 col-sm-12 col-xs-12">
+                <div id="loremCarousel" class="carousel slide" data-ride="carousel">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                  </ol>
+
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                      <img data-src="holder.js/900x500/auto/#777:#555/text:First slide" alt="First slide [900x500]" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNzc3OiM1NTUvdGV4dDpGaXJzdCBzbGlkZQpDcmVhdGVkIHdpdGggSG9sZGVyLmpzIDIuNi4wLgpMZWFybiBtb3JlIGF0IGh0dHA6Ly9ob2xkZXJqcy5jb20KKGMpIDIwMTItMjAxNSBJdmFuIE1hbG9waW5za3kgLSBodHRwOi8vaW1za3kuY28KLS0+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48IVtDREFUQVsjaG9sZGVyXzE1NjEyYTFlNTk0IHRleHQgeyBmaWxsOiM1NTU7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6NDVwdCB9IF1dPjwvc3R5bGU+PC9kZWZzPjxnIGlkPSJob2xkZXJfMTU2MTJhMWU1OTQiPjxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiBmaWxsPSIjNzc3Ii8+PGc+PHRleHQgeD0iMzA4LjI5Njg3NSIgeT0iMjcwLjEiPkZpcnN0IHNsaWRlPC90ZXh0PjwvZz48L2c+PC9zdmc+" data-holder-rendered="true">
+                    </div>
+
+                  </div>
+
+                  <!-- Controls -->
+                  <a class="left carousel-control" href="#" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="right carousel-control" href="#" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane active" id="settings">
+          <div class="padding-15">
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingOne">
+                  <h4 class="panel-title">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                      Photo Settings
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                  <div class="panel-body">
+                    sze:
+                  </div>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                  <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                      Chat settings
+                    </a>
+                  </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+                  <div class="panel-body">
+                    <input id="name" type="text" class="form-control" placeholder="enter nickname">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="http://185.13.90.140:8081/socket.io/socket.io.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/dom.js"></script>
+    <script src="scripts/settings.js"></script>
+    <script src="scripts/tabs.js"></script>
+    <script src="scripts/carousel.js"></script>
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>
