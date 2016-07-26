@@ -16,11 +16,14 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'node_modules/jquery/dist/jquery.min.js',
-      'test/libgulp/io-mock.js',
+      'bower_components/lodash/dist/lodash.min.js',
+      'test/lib/io-mock.js',
+      'test/lib/utils.js',
       'app/scripts/dom.js',
+      'app/scripts/tabs.js',
       'app/scripts/*.spec.js'/*
       'app/scripts/settings.js',
-      'app/scripts/tabs.js',
+      ,
       'app/scripts/carousel.js',
       'app/scripts/!*.js'*/
 

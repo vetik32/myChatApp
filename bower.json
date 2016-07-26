@@ -2,7 +2,8 @@
   "name": "mychatapp",
   "private": true,
   "dependencies": {
-    "bootstrap-sass": "~3.3.5"
+    "bootstrap-sass": "~3.3.5",
+    "lodash": "^4.14.0"
   },
   "overrides": {
     "bootstrap-sass": {

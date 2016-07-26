@@ -37,12 +37,12 @@
 
       DOM.toggleClass(activeTab, ACTIVE, false);
 
-      tabs.forEach(function (tab) {
+      _.forEach(tabs, function (tab) {
         tab.hide();
       })
     }
 
-    links.forEach(function (anchor) {
+    _.each(links, function (anchor) {
       DOM.on(anchor, 'click', closeAllTabs);
       tabs.push(Tab(anchor));
     });
