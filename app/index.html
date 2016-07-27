@@ -27,7 +27,8 @@
     <div class="container">
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist" id="navigationTabs">
-        <li role="presentation"><a href="#chat" aria-controls="home" role="tab" data-toggle="tab">Chat</a></li>
+        <li role="presentation"><a href="#chat" aria-controls="home" role="tab" data-toggle="tab">Chat
+          <span class="badge" id="missingMessagesId"></span></a></li>
         <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Photos</a></li>
         <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
       </ul>
@@ -81,7 +82,7 @@
             </div>
           </div>
         </div>
-        <div role="tabpanel" class="tab-pane active" id="settings">
+        <div role="tabpanel" class="tab-pane" id="settings">
           <div class="padding-15">
             <div class="panel-group" id="settingsWidget" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default">
@@ -135,6 +136,8 @@
     <script src="scripts/accordion.js"></script>
     <script src="scripts/tabs.js"></script>
     <script src="scripts/carousel.js"></script>
+    <script src="scripts/chat.js"></script>
+    <script src="scripts/message-badge.js"></script>
     <script src="scripts/main.js"></script>
     <!-- endbuild -->
   </body>

@@ -16,7 +16,7 @@ describe('Accordion Panels', function () {
   });
 
   afterEach(function () {
-    //$('#sandbox').remove()
+    $('#sandbox').remove()
   });
 
   it('should toggle accordion', function () {

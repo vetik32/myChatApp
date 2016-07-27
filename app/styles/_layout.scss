@@ -9,5 +9,25 @@
 
 #allPosts {
   overflow: auto;
-  height: 300px;
+  height: 400px;
+}
+
+@media only screen
+        and (orientation: landscape) {
+  #allPosts {
+    height: 250px;
+  }
+}
+
+#navigationTabs {
+  a[href="#chat"] {
+    padding-right: 36px;
+
+    .badge {
+      position: absolute;
+      top: 50%;
+      right: 4px;
+      margin-top: -9px;
+    }
+  }
 }

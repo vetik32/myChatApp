@@ -1,7 +1,11 @@
 (function (scope, DOM, Panels, STATE) {
 
-  function TabPanel(node) {
+  function TabPanel(node, index) {
     var panel = DOM.findFirst('#' + node.href.split('#')[1]);
+
+    function isSelected () {
+      return DOM.hasClass(node.parentNode, STATE.ACTIVE) && DOM.hasClass(panel, STATE.ACTIVE);
+    }
 
     function showPanel() {
       DOM.toggleClass(node.parentNode, STATE.ACTIVE, true);
@@ -16,18 +20,22 @@
     DOM.on(node, 'click', function (e) {
       e.preventDefault();
       showPanel();
+      DOM.triggerCustom(node, 'select', index);
     });
 
     return {
       show: showPanel,
-      hide: hidePanel
+      hide: hidePanel,
+      isActive: function () {
+        return isSelected();
+      }
     }
   }
 
   function Tabs(selector) {
     var root = DOM.findFirst(selector);
     var panelTogglers = DOM.find(selector + ' a');
-    var panels = Panels(panelTogglers, TabPanel);
+    var tabs = Panels(panelTogglers, TabPanel, root);
 
     function showFirstTabIfNoneSelected() {
       var activeTabs = DOM.find('.' + STATE.ACTIVE, root).length;
@@ -36,12 +44,18 @@
         return;
       }
 
-      panels.show(0);
+      tabs.show(0);
     }
 
     showFirstTabIfNoneSelected();
 
-    return panels;
+    return {
+      show: tabs.show,
+      onSelect: tabs.onSelect,
+      isActive: function (index) {
+        return tabs.panels[index].isActive()
+      }
+    };
   }
 
   scope.Tabs = Tabs;

@@ -23,8 +23,8 @@ module.exports = function(config) {
       'app/scripts/panels.js',
       'app/scripts/accordion.js',
       'app/scripts/tabs.js',
+      'app/scripts/message-badge.js',
       'app/scripts/*.spec.js'/*
-      'app/scripts/settings.js',
       ,
       'app/scripts/carousel.js',
       'app/scripts/!*.js'*/

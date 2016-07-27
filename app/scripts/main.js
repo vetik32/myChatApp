@@ -1,13 +1,14 @@
-(function (Settings, IO, DOM, Carousel, Tabs, Accordion) {
+(function (Settings, IO, DOM, Carousel, Tabs, Accordion, chatInstance, MissingMessageCounter) {
   var tabs = Tabs('#navigationTabs');
   var accordion = Accordion('#accordion');
   var carousel = Carousel('#loremCarousel');
   var socket = IO.connect(Settings.getSocketIP());
-  var sendMessage = DOM.findFirst('#message'),
-    allPostsArea = DOM.findFirst('#allPosts'),
-    sendButton = DOM.findFirst('#send');
+  var sendMessage = DOM.findFirst('#message');
 
-  tabs.show(2);
+  var sendButton = DOM.findFirst('#send');
+  var CHAT_TAB_INDEX = 0;
+  var missingMessageCounter = MissingMessageCounter('#missingMessagesId');
+
   accordion.show(1);
 
   function buildMessage(msg) {
@@ -18,40 +19,26 @@
 
   }
 
-  function getMessageMarkup(data) {
-    if (!data.user) {
-      return '<div class="message-system">' + data.message + '</div>';
+  socket.on('message', function (message) {
+    chatInstance.showMessage(message);
+
+    if (!tabs.isActive(CHAT_TAB_INDEX)) {
+      missingMessageCounter.increment();
     }
+  });
 
-    var message = '';
-    var messageType = '';
-
-    if (data.user === Settings.getUserName()) {
-      messageType = 'local';
-      message = data.message
-    } else if (data.user === 'echoBot2000') {
-      messageType = 'system';
-      message = data.user + ': ' + data.message;
-    } else {
-      messageType = 'remote';
-      message = data.user + ': ' + data.message;
+  tabs.onSelect(function(selectedTabIndex){
+    if (selectedTabIndex === CHAT_TAB_INDEX) {
+      missingMessageCounter.reset();
+      chatInstance.scrollToLastMessage();
     }
-
-    return '<div class="message-' + messageType + '">' + message + '</div>';
-  }
-
-  //SOCKET STUFF
-  socket.on('message', function (data) {
-    var copy = DOM.getHtml(allPostsArea);
-    var chatMsg = getMessageMarkup(data);
-
-    DOM.setHtml(allPostsArea, copy + chatMsg);
-    DOM.scrollTo(DOM.findLast('div', allPostsArea));
   });
 
   DOM.on(sendButton, 'click', function (e) {
     if (sendMessage.value.length) {
-      socket.emit('message', buildMessage(sendMessage.value));
+      var message = buildMessage(sendMessage.value);
+      socket.emit('message', message);
+      chatInstance.showMessage(message);
       sendMessage.value = '';
     }
   });
@@ -62,4 +49,4 @@
     }
   });
 
-})(Settings, io, DOM, Carousel, Tabs, Accordion);
+})(Settings, io, DOM, Carousel, Tabs, Accordion, Chat, MissingMessageCounter);

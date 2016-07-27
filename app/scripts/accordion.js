@@ -40,7 +40,10 @@
 
     return {
       show: showPanel,
-      hide: hidePanel
+      hide: hidePanel,
+      isActive: function () {
+        return !isCollapsed();
+      }
     }
   }
 
