@@ -1,7 +1,5 @@
 describe("Missing Message Badge", function () {
   var $sandbox;
-  var accordionSelector = '#accordion';
-  var accordionTabIds = ['accordion1', 'accordion2', 'accordion3'];
   var instance;
   var $el;
 
