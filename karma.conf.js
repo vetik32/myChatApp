@@ -18,8 +18,10 @@ module.exports = function(config) {
       'node_modules/jquery/dist/jquery.min.js',
       'bower_components/lodash/dist/lodash.min.js',
       'test/lib/io-mock.js',
-      'test/lib/utils.js',
       'app/scripts/dom.js',
+      'app/scripts/state.js',
+      'app/scripts/panels.js',
+      'app/scripts/accordion.js',
       'app/scripts/tabs.js',
       'app/scripts/*.spec.js'/*
       'app/scripts/settings.js',

@@ -29,7 +29,7 @@
       <ul class="nav nav-tabs" role="tablist" id="navigationTabs">
         <li role="presentation"><a href="#chat" aria-controls="home" role="tab" data-toggle="tab">Chat</a></li>
         <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Photos</a></li>
-        <li role="presentation"  class="active"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
       </ul>
 
       <!-- Tab panes -->
@@ -83,7 +83,7 @@
         </div>
         <div role="tabpanel" class="tab-pane active" id="settings">
           <div class="padding-15">
-            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="panel-group" id="settingsWidget" role="tablist" aria-multiselectable="true">
               <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingOne">
                   <h4 class="panel-title">
@@ -101,12 +101,12 @@
               <div class="panel panel-default">
                 <div class="panel-heading" role="tab" id="headingTwo">
                   <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                       Chat settings
                     </a>
                   </h4>
                 </div>
-                <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                   <div class="panel-body">
                     <input id="name" type="text" class="form-control" placeholder="enter nickname">
                   </div>
@@ -130,6 +130,9 @@
     <!-- build:js scripts/main.js -->
     <script src="scripts/dom.js"></script>
     <script src="scripts/settings.js"></script>
+    <script src="scripts/state.js"></script>
+    <script src="scripts/panels.js"></script>
+    <script src="scripts/accordion.js"></script>
     <script src="scripts/tabs.js"></script>
     <script src="scripts/carousel.js"></script>
     <script src="scripts/main.js"></script>

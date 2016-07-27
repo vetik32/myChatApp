@@ -32,6 +32,14 @@
 
       node.scrollIntoView();
     },
+    hasClass: function (node, className) {
+      if (!node) {
+        return false;
+      }
+      var classes = node.className ? node.className.split(' ') : [];
+
+      return classes.indexOf(className) > -1;
+    },
     toggleClass: function (node, className, add) {
       if (!node) {
         return;

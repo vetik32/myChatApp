@@ -1,10 +1,14 @@
-(function (Settings, IO, DOM, Carousel, Tabs) {
+(function (Settings, IO, DOM, Carousel, Tabs, Accordion) {
   var tabs = Tabs('#navigationTabs');
+  var accordion = Accordion('#accordion');
   var carousel = Carousel('#loremCarousel');
   var socket = IO.connect(Settings.getSocketIP());
   var sendMessage = DOM.findFirst('#message'),
     allPostsArea = DOM.findFirst('#allPosts'),
     sendButton = DOM.findFirst('#send');
+
+  tabs.show(2);
+  accordion.show(1);
 
   function buildMessage(msg) {
     return {
@@ -58,4 +62,4 @@
     }
   });
 
-})(Settings, io, DOM, Carousel, Tabs);
+})(Settings, io, DOM, Carousel, Tabs, Accordion);

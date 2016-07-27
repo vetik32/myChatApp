@@ -1,60 +1,49 @@
-(function (scope, DOM) {
+(function (scope, DOM, Panels, STATE) {
 
-  var ACTIVE = 'active';
-
-  function Tab(node) {
+  function TabPanel(node) {
     var panel = DOM.findFirst('#' + node.href.split('#')[1]);
 
-    function showTab() {
-      DOM.toggleClass(node.parentNode, ACTIVE, true);
-      DOM.toggleClass(panel, ACTIVE, true);
+    function showPanel() {
+      DOM.toggleClass(node.parentNode, STATE.ACTIVE, true);
+      DOM.toggleClass(panel, STATE.ACTIVE, true);
     }
 
-    function hideTab() {
-      DOM.toggleClass(node.parentNode, ACTIVE, false);
-      DOM.toggleClass(panel, ACTIVE, false);
+    function hidePanel() {
+      DOM.toggleClass(node.parentNode, STATE.ACTIVE, false);
+      DOM.toggleClass(panel, STATE.ACTIVE, false);
     }
 
     DOM.on(node, 'click', function (e) {
       e.preventDefault();
-      showTab();
+      showPanel();
     });
 
     return {
-      show: showTab,
-      hide: hideTab
+      show: showPanel,
+      hide: hidePanel
     }
   }
 
   function Tabs(selector) {
     var root = DOM.findFirst(selector);
-    var links = DOM.find(selector + ' a');
-    var tabs = [];
+    var panelTogglers = DOM.find(selector + ' a');
+    var panels = Panels(panelTogglers, TabPanel);
 
+    function showFirstTabIfNoneSelected() {
+      var activeTabs = DOM.find('.' + STATE.ACTIVE, root).length;
 
-    function closeAllTabs() {
-      var activeTab = DOM.findFirst('.' + ACTIVE, root);
+      if (activeTabs === 1) {
+        return;
+      }
 
-      DOM.toggleClass(activeTab, ACTIVE, false);
-
-      _.forEach(tabs, function (tab) {
-        tab.hide();
-      })
+      panels.show(0);
     }
 
-    _.each(links, function (anchor) {
-      DOM.on(anchor, 'click', closeAllTabs);
-      tabs.push(Tab(anchor));
-    });
+    showFirstTabIfNoneSelected();
 
-    var hasActiveTabDefined = DOM.findFirst('.' + ACTIVE, root);
-
-    if (!hasActiveTabDefined) {
-      closeAllTabs();
-      tabs[0].show();
-    }
+    return panels;
   }
 
   scope.Tabs = Tabs;
 
-})(window, DOM);
+})(window, DOM, Panels, STATE);

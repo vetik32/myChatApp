@@ -1,4 +1,4 @@
-describe("Panels", function () {
+describe('Tab Panels', function () {
   var $sandbox;
   var tabIds = ['tab1', 'tab2', 'tab3'];
 
@@ -18,14 +18,14 @@ describe("Panels", function () {
     //$('#sandbox').remove()
   });
 
-  it("should have one active panel", function () {
+  it('should have one active panel', function () {
     var tabs = Tabs('#nav');
 
     expect($sandbox.find('ul li:first')[0].className).toEqual('active');
     expect($sandbox.find('#tab1')[0].className).toEqual('active');
   });
 
-  it("should switch tab", function () {
+  it('should switch tab', function () {
     var tabs = Tabs('#nav');
     var lastTab = $sandbox.find('ul li:last a')[0];
 
