@@ -14,10 +14,26 @@
     on: function (node, type, listener) {
       node.addEventListener(type, listener)
     },
-    trigger: function (elem, type, detail) {
+    off: function (node, type, listener) {
+      node.removeEventListener(type, listener)
+    },
+    trigger: function (elem, type) {
       var event = new Event(type);
 
       elem.dispatchEvent(event);
+    },
+    create: function (tagName) {
+      return document.createElement(tagName);
+    },
+    setStyle: function (node, styles) {
+      if (!node) {
+        console.log('node:', node);
+        return;
+      }
+
+      _.each(styles, function (value, key) {
+        node.style[key] = value;
+      });
     },
     triggerCustom: function (elem, type, detail) {
       var event = new CustomEvent(type, {
@@ -43,6 +59,7 @@
       if (!node) {
         return false;
       }
+
       var classes = node.className ? node.className.split(' ') : [];
 
       return classes.indexOf(className) > -1;

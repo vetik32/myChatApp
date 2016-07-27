@@ -1,22 +1,49 @@
 (function(scope, DOM){
 
+  var SETTINGS = {
+    USER_NAME: 'userName',
+    IMAGE_WIDTH: 'imageWidth',
+    IMAGE_HEIGHT: 'imageHeight'
+  };
+
   function Settings() {
-    var userName = '';
+    var defaultSettings = {
+      serverIp: 'http://185.13.90.140:8081',
+      userName: 'anonymous',
+      imageWidth: 400,
+      imageHeight: 200
+    };
+
+    _.each(DOM.find('#settings .form-control'), function(node){
+      var defaultValue = defaultSettings[node.id];
+      if (!defaultValue) {
+        return
+      }
+
+      node.value = defaultValue;
+    });
+    function getSetting(settingName) {
+      var inputName = DOM.findFirst('#' + settingName);
+
+      if (!inputName) {
+        return defaultSettings[settingName]
+      }
+
+      return inputName.value || defaultSettings[settingName];
+    }
 
     return {
       getUserName: function () {
-        var inputName = DOM.findFirst('#name');
-
-        if (inputName.value) {
-          userName = inputName.value;
-        } else {
-          userName = 'anonymous';
-        }
-
-        return userName;
+        return getSetting(SETTINGS.USER_NAME);
       },
       getSocketIP: function () {
-        return 'http://185.13.90.140:8081'
+        return defaultSettings.serverIp;
+      },
+      getImageSize: function () {
+        return {
+          width: getSetting(SETTINGS.IMAGE_WIDTH),
+          height: getSetting(SETTINGS.IMAGE_HEIGHT)
+        }
       }
     }
   }

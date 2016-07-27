@@ -1,7 +1,7 @@
 (function (Settings, IO, DOM, Carousel, Tabs, Accordion, chatInstance, MissingMessageCounter) {
   var tabs = Tabs('#navigationTabs');
   var accordion = Accordion('#accordion');
-  var carousel = Carousel('#loremCarousel');
+  var carousel = Carousel('#imageCarousel');
   var socket = IO.connect(Settings.getSocketIP());
   var sendMessage = DOM.findFirst('#message');
 

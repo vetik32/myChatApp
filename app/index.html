@@ -11,10 +11,12 @@
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
+
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:css styles/main.css -->
+    <!-- build:css styles/main.min.css -->
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
     
@@ -27,9 +29,9 @@
     <div class="container">
       <!-- Nav tabs -->
       <ul class="nav nav-tabs" role="tablist" id="navigationTabs">
-        <li role="presentation"><a href="#chat" aria-controls="home" role="tab" data-toggle="tab">Chat
+        <li role="presentation"><a href="#chat" aria-controls="chat" role="tab" data-toggle="tab">Chat
           <span class="badge" id="missingMessagesId"></span></a></li>
-        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Photos</a></li>
+        <li role="presentation"><a href="#photos" aria-controls="photos" role="tab" data-toggle="tab">Photos</a></li>
         <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
       </ul>
 
@@ -48,22 +50,17 @@
             </div>
           </div>
         </div>
-        <div role="tabpanel" class="tab-pane" id="messages">
+        <div role="tabpanel" class="tab-pane" id="photos">
           <div class="padding-15">
             <div class="row">
-              <div class="col-md-9 col-sm-12 col-xs-12">
-                <div id="loremCarousel" class="carousel slide" data-ride="carousel">
-                  <!-- Indicators -->
-                  <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                  </ol>
-
+              <div class="initialising">
+                <div class="alert alert-success" role="alert">Initialising</div>
+                <div id="imageCarousel" class="carousel slide" data-ride="carousel">
+                  <i class="fa fa-refresh fa-spin"></i>
                   <!-- Wrapper for slides -->
                   <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                      <img data-src="holder.js/900x500/auto/#777:#555/text:First slide" alt="First slide [900x500]" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNzc3OiM1NTUvdGV4dDpGaXJzdCBzbGlkZQpDcmVhdGVkIHdpdGggSG9sZGVyLmpzIDIuNi4wLgpMZWFybiBtb3JlIGF0IGh0dHA6Ly9ob2xkZXJqcy5jb20KKGMpIDIwMTItMjAxNSBJdmFuIE1hbG9waW5za3kgLSBodHRwOi8vaW1za3kuY28KLS0+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48IVtDREFUQVsjaG9sZGVyXzE1NjEyYTFlNTk0IHRleHQgeyBmaWxsOiM1NTU7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6NDVwdCB9IF1dPjwvc3R5bGU+PC9kZWZzPjxnIGlkPSJob2xkZXJfMTU2MTJhMWU1OTQiPjxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiBmaWxsPSIjNzc3Ii8+PGc+PHRleHQgeD0iMzA4LjI5Njg3NSIgeT0iMjcwLjEiPkZpcnN0IHNsaWRlPC90ZXh0PjwvZz48L2c+PC9zdmc+" data-holder-rendered="true">
+                      <img id="imagePlaceholder" data-src="holder.js/900x500/auto/#777:#555/text:First slide" alt="First slide [900x500]" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iOTAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDkwMCA1MDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjwhLS0KU291cmNlIFVSTDogaG9sZGVyLmpzLzkwMHg1MDAvYXV0by8jNzc3OiM1NTUvdGV4dDpGaXJzdCBzbGlkZQpDcmVhdGVkIHdpdGggSG9sZGVyLmpzIDIuNi4wLgpMZWFybiBtb3JlIGF0IGh0dHA6Ly9ob2xkZXJqcy5jb20KKGMpIDIwMTItMjAxNSBJdmFuIE1hbG9waW5za3kgLSBodHRwOi8vaW1za3kuY28KLS0+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj48IVtDREFUQVsjaG9sZGVyXzE1NjEyYTFlNTk0IHRleHQgeyBmaWxsOiM1NTU7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6NDVwdCB9IF1dPjwvc3R5bGU+PC9kZWZzPjxnIGlkPSJob2xkZXJfMTU2MTJhMWU1OTQiPjxyZWN0IHdpZHRoPSI5MDAiIGhlaWdodD0iNTAwIiBmaWxsPSIjNzc3Ii8+PGc+PHRleHQgeD0iMzA4LjI5Njg3NSIgeT0iMjcwLjEiPkZpcnN0IHNsaWRlPC90ZXh0PjwvZz48L2c+PC9zdmc+" data-holder-rendered="true">
                     </div>
 
                   </div>
@@ -95,7 +92,15 @@
                 </div>
                 <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                   <div class="panel-body">
-                    sze:
+                    <div class="input-group">
+                      <span class="input-group-addon" id="sizing-addon1">Width</span>
+                      <input type="text" class="form-control" id="imageWidth" aria-describedby="sizing-addon1">
+                    </div>
+                    <br />
+                    <div class="input-group">
+                      <span class="input-group-addon" id="sizing-addon2">Height</span>
+                      <input type="text" class="form-control" id="imageHeight" aria-describedby="sizing-addon2">
+                    </div>
                   </div>
                 </div>
               </div>
@@ -109,7 +114,10 @@
                 </div>
                 <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                   <div class="panel-body">
-                    <input id="name" type="text" class="form-control" placeholder="enter nickname">
+                    <div class="input-group">
+                      <span class="input-group-addon" id="sizing-addon3">Username</span>
+                      <input type="text" class="form-control" id="userName" aria-describedby="sizing-addon3">
+                    </div>
                   </div>
                 </div>
               </div>
@@ -121,14 +129,13 @@
     </div>
 
 
-    <!-- build:js scripts/vendor.js -->
+    <script src="http://185.13.90.140:8081/socket.io/socket.io.js"></script>
+
+    <!-- build:js scripts/main.min.js -->
     <!-- bower:js -->
     <script src="/bower_components/lodash/dist/lodash.core.min.js"></script>
-    <script src="http://185.13.90.140:8081/socket.io/socket.io.js"></script>
     <!-- endbower -->
-    <!-- endbuild -->
-    
-    <!-- build:js scripts/main.js -->
+
     <script src="scripts/dom.js"></script>
     <script src="scripts/settings.js"></script>
     <script src="scripts/state.js"></script>

@@ -1,4 +1,4 @@
-describe("Missing Message Badge", function () {
+describe('Missing Message Badge', function () {
   var $sandbox;
   var instance;
   var $el;
@@ -16,11 +16,11 @@ describe("Missing Message Badge", function () {
     $('#sandbox').remove();
   });
 
-  it("should be empty at beginning", function () {
+  it('should be empty at beginning', function () {
     expect($el.html()).toEqual('');
   });
 
-  it("should be updated", function () {
+  it('should be updated', function () {
     instance.increment();
     expect($el.html()).toEqual('1');
 
