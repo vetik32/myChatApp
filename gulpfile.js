@@ -132,25 +132,6 @@ gulp.task('serve:dist', () => {
   });
 });
 
-gulp.task('serve:test', ['scripts'], () => {
-  browserSync({
-    notify: false,
-    port: 9000,
-    ui: false,
-    server: {
-      baseDir: 'test',
-      routes: {
-        '/scripts': '.tmp/scripts',
-        '/bower_components': 'bower_components'
-      }
-    }
-  });
-
-  gulp.watch('app/scripts/**/*.js', ['scripts']);
-  gulp.watch('test/spec/**/*.js').on('change', reload);
-  gulp.watch('test/spec/**/*.js', ['lint:test']);
-});
-
 /**
  * Run test once and exit
  */

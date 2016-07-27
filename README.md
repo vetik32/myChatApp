@@ -15,6 +15,13 @@ bower libraries:
 $ bower install
 ```
 
+## Build
+
+```
+$ gulp build
+```
+
+The output will be generated into `dist/` directory
 
 ## Test
 
@@ -28,3 +35,4 @@ $ gulp test
 ```
 $ gulp serve
 ```
+
