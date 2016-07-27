@@ -10,8 +10,8 @@ $ npm install
 ```
 
 bower libraries:
-
 ```
+$ npm -g i bower
 $ bower install
 ```
 
