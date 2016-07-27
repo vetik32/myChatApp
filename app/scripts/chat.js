@@ -13,7 +13,7 @@
     if (data.user === Settings.getUserName()) {
       messageType = 'local';
       message = data.message
-    } else if (data.user === 'echoBot2000') {
+    } else if (data.user === USER_BOT) {
       messageType = 'system';
       message = data.user + ': ' + data.message;
     } else {
@@ -30,10 +30,6 @@
   function Chat() {
     return {
       showMessage: function (data) {
-
-        if (data.user === USER_BOT) {
-          return;
-        }
         var copy = DOM.getHtml(allPostsArea);
         var chatMsg = getMessageMarkup(data);
 

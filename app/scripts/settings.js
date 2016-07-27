@@ -16,12 +16,14 @@
 
     _.each(DOM.find('#settings .form-control'), function(node){
       var defaultValue = defaultSettings[node.id];
+
       if (!defaultValue) {
         return
       }
 
-      node.value = defaultValue;
+      node.placeholder = defaultValue;
     });
+
     function getSetting(settingName) {
       var inputName = DOM.findFirst('#' + settingName);
 
